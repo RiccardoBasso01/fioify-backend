@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('artista_canzone', function (Blueprint $table) {
+    public function up()
+    {   
+        Schema::create('albums', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->foreignId('artist_id')->constrained('artists')->onDelete('cascade');
+            $table->string('cover_image'); // Immagine di copertura dell'album
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artista_canzone');
+        Schema::dropIfExists('albums');
     }
 };

@@ -9,19 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('albums', function (Blueprint $table) {
+        Schema::create('artists', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('profile_image');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('albums');
+        Schema::dropIfExists('artists');
     }
 };
